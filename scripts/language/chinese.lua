@@ -23,9 +23,14 @@ directory. If not, please refer to
 	CY notes (rules to keep consistency):
 	1. Not break Chinese characters with space, even color tags. 
 	2. Only break when meeting pucntuations or numbers or player names.
-	3. Remove unneccessary colons to make strings into a natural sentence (reads better). If it's field-like then keep the colon, eg. "Sanity: %s" -> "理智： %s".
+	3. Remove unneccessary colons to make strings into a natural sentence (reads better). 
+	   If it's field-like then keep the colon, eg. "Sanity: %s" -> "理智： %s".
 	4. If english "Will die in: %s", then chinese "%s后死亡". Notice there should be no space before "后".
 	5. Translate "Sanity" as "理智" instead of "精神" by dst wiki: https://dontstarve.fandom.com/zh/wiki/%E7%90%86%E6%99%BA?variant=zh-cn
+	6. In strings, you can use $1 to represent the first %s in original string, $2 as second %s, and so on. 
+	   Eg. "Regenerating %s in %s" -> "$2后$1重新生长", the first %s is an entity name and the second is the time, 
+	   however in chinese expressions the time usually goes first, the order of %s are changed, 
+	   so use $1 and $2 to have flexible places of %s
 ]]
 
 --[[
