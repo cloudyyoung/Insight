@@ -128,7 +128,7 @@ return {
 	-- catcoonden.lua [Prefab]
 	catcoonden = {
 		lives = catcoon .. "寿命: %s / %s",
-		regenerate = catcoon .. "将复活于 %s",
+		regenerate = catcoon .. "%s后复活",
 		waiting_for_sleep = "等待附近的玩家走开."
 	},
 
@@ -144,7 +144,7 @@ return {
 		children = "<color=MOB_SPAWN><prefab=%s></color>: %s<sub>in</sub> + %s<sub>out</sub> / %s",
 		emergency_children = "*<color=MOB_SPAWN><prefab=%s></color>: %s<sub>in</sub> + %s<sub>out</sub> / %s",
 		both_regen = "<color=MOB_SPAWN><prefab=%s></color> & <color=MOB_SPAWN><prefab=%s></color>",
-		regenerating = "%s 重新生长于 %s",
+		regenerating = "$2后$1重新生长",
 		entity = "<color=MOB_SPAWN><prefab=%s></color>"
 	},
 
@@ -181,9 +181,9 @@ return {
 		["buff_moistureimmunity"] = "免疫<color=WET>潮湿</color>, 持续 %s 秒。",
 		["buff_electricattack"] = "攻击<color=WET>带电</color>, 持续 %s 秒。",
 		["buff_sleepresistance"] = "抵抗<color=MONSTER>睡眠</color>, 持续 %s 秒。",
-		["tillweedsalve_buff"] = "回复 <color=HEALTH>%s 健康</color>于 %s 秒。",
-		["healthregenbuff"] = "回复 <color=HEALTH>%s 健康</color>于 %s 秒。",
-		["sweettea_buff"] = "回复 <color=SANITY>%s 理智</color>于 %s 秒."
+		["tillweedsalve_buff"] = "$2 秒内回复 <color=HEALTH>$1 健康</color>。",
+		["healthregenbuff"] = "$2 秒内回复 <color=HEALTH>$1 健康</color>。",
+		["sweettea_buff"] = "$2 秒内回复 <color=SANITY>$1 理智</color>。"
 	},
 
 	-- deerclopsspawner.lua
@@ -216,7 +216,7 @@ return {
 	dry_time = "完成还需: %s",
 
 	-- edible.lua
-	food_unit = "<color=%s>%s</color> 个单位的 <color=%s>%s</color>",
+	food_unit = "<color=%s>%s</color> 个单位的<color=%s>%s</color>",
 	edible_interface = "<color=HUNGER>饥饿</color>: <color=HUNGER>%s</color> / <color=SANITY>理智</color>: <color=SANITY>%s</color> / <color=HEALTH>生命</color>: <color=HEALTH>%s</color>",
 	edible_wiki = "<color=HEALTH>生命</color>: <color=HEALTH>%s</color> / <color=HUNGER>饥饿</color>: <color=HUNGER>%s</color> / <color=SANITY>理智</color>: <color=SANITY>%s</color>",
 	edible_foodtype = {
@@ -308,8 +308,8 @@ return {
 		growth_value = "缩短 <color=NATURE>%s</color> 秒<color=NATURE>生长时间</color>",
 		nutrient_value = "养分: [<color=NATURE>%s<sub>催长剂</sub></color>, <color=CAMO>%s<sub>堆肥</sub></color>, <color=INEDIBLE>%s<sub>粪肥</sub></color>]",
 		wormwood = {
-			formula_growth = "加速<color=LIGHT_PINK>开花</color> <color=LIGHT_PINK>%s</color>。",
-			compost_heal = "<color=HEALTH>回复</color>你的<color=HEALTH>%+d</color>于 <color=HEALTH>%s</color> 秒."
+			formula_growth = "你的<color=LIGHT_PINK>开花</color>加速 <color=LIGHT_PINK>%s</color>。",
+			compost_heal = "<color=HEALTH>回复</color> <color=HEALTH>$2</color> 秒你的<color=HEALTH>$1</color>。"
 		}
 	},
 
@@ -408,7 +408,7 @@ return {
 	-- harvestable.lua
 	harvestable = {
 		product = "%s: %s / %s",
-		grow = "+1 于 %s后"
+		grow = "%s后+1"
 	},
 
 	-- hatchable.lua
@@ -496,8 +496,8 @@ return {
 	moonstormmanager = {
 		wagstaff_hunt = {
 			progress = "目的地进度: %s / %s",
-			time_for_next_tool = "另一个工具将需要于 %s",
-			experiment_time = "实验将完成于 %s"
+			time_for_next_tool = "%s后需要另一个工具",
+			experiment_time = "%s后实验完成"
 		},
 		storm_move = "%s%% 几率于第 %d 天月球风暴。"
 	},
@@ -520,8 +520,8 @@ return {
 		spoil = "变质",
 		dies = "死亡",
 		starves = "饿死",
-		transition = "<color=MONSTER>%s</color>于%s后", -- This is correct
-		transition_extended = "<color=MONSTER>%s</color>于%s后 (<color=MONSTER>%s%%</color>)",
+		transition = "$2后<color=MONSTER>$1</color>", -- This is correct
+		transition_extended = "$2后<color=MONSTER>$1</color> (<color=MONSTER>%s%%</color>)",
 		paused = "当前暂停腐烂"
 	},
 
@@ -607,9 +607,9 @@ return {
 	scenariorunner = {
 		opened_already = "这个已经打开过了",
 		chest_labyrinth = {
-			sanity = "66% 几率改变<color=SANITY>理智</color>，从 <color=SANITY>-20</color> 到 <color=SANITY>20</color>。",
-			hunger = "66% 几率改变<color=HUNGER>饥饿</color>，从 <color=HUNGER>-20</color> 到 <color=HUNGER>20</color>。",
-			health = "66% 几率改变<color=HEALTH>健康</color>，从 <color=HEALTH>0</color> 到 <color=HEALTH>20</color>。",
+			sanity = "66% 几率让<color=SANITY>理智</color>从 <color=SANITY>-20</color> 上升到 <color=SANITY>20</color>。",
+			hunger = "66% 几率让<color=HUNGER>饥饿</color>从 <color=HUNGER>-20</color> 上升到 <color=HUNGER>20</color>。",
+			health = "66% 几率让<color=HEALTH>健康</color>从 <color=HEALTH>0</color> 上升到 <color=HEALTH>20</color>。",
 			inventory = "66% 几率增加 20% <color=LIGHT>耐久</color>或<color=MONSTER>新鲜</color>。",
 			summonmonsters = "66% 几率召唤 1-3 个<color=MOB_SPAWN>穴居悬蛛</color>."
 		}
@@ -627,11 +627,11 @@ return {
 	-- singable.lua
 	singable = {
 		battlesong = {
-			battlesong_durability = "<color=HEALTH>武器</color>增加 <color=#aaaaee>%s%%</color> 持续时间。",
+			battlesong_durability = "<color=HEALTH>武器</color>持续时间增加 <color=#aaaaee>%s%%</color>。",
 			battlesong_healthgain = "攻击敌人回复 <color=HEALTH>%s 生命</color> (薇格弗德为 <color=HEALTH>%s</color>)。",
 			battlesong_sanitygain = "攻击敌人回复 <color=SANITY>%s 理智</color>。",
 			battlesong_sanityaura = "<color=SANITY>负理智光环</color>效果减少 <color=SANITY>%s%%</color>。",
-			battlesong_fireresistance = "受到 <color=HEALTH>%s%% 更少</color>的<color=LIGHT>火焰</color>伤害。", -- need optimization
+			battlesong_fireresistance = "受到的<color=LIGHT>火焰</color>伤害<color=HEALTH>减少 %s%%</color>。", -- need optimization
 			battlesong_instant_taunt = "嘲讽所有战歌范围内附近的敌人。",
 			battlesong_instant_panic = "惊恐附近可惊恐的敌人 %s 秒."
 		},
@@ -650,14 +650,14 @@ return {
 
 	-- spawner.lua
 	spawner = {
-		next = "将生成 <color=MOB_SPAWN>%s</color> 于 %s",
+		next = "$2后生成 <color=MOB_SPAWN>$1</color>",
 		child = "生成一个 <color=#ff9999>%s</color>"
 	},
 
 	-- stagehand.lua [Prefab]
 	stagehand = {
 		hits_remaining = "剩余<color=#aaaaee>敲击</color>: <color=#aaaaee>%s</color>",
-		time_to_reset = "将重置于 %s."
+		time_to_reset = "%s后重置"
 	},
 
 	-- stewer.lua
@@ -757,9 +757,9 @@ return {
 
 	-- witherable.lua
 	witherable = {
-		delay = "状态变化延迟 %s",
-		wither = "将枯萎于 %s",
-		rejuvenate = "将复长于 %s"
+		delay = "状态变化延迟%s",
+		wither = "%s后枯萎",
+		rejuvenate = "%s后复长"
 	},
 
 	-- workable.lua
@@ -777,8 +777,8 @@ return {
 
 	-- worldsettingstimer.lua
 	worldsettingstimer = {
-		label = "WSTimer '%s': %s",
-		paused = "Paused"
+		label = "世界计时器 '%s': %s",
+		paused = "已暂停"
 	},
 
 	-- wx78.lua [Prefab]
